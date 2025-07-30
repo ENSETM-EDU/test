@@ -77,7 +77,7 @@ export function Layout({ children }: LayoutProps) {
             </div>
             
             <div className="flex items-center">
-              {/* Mobile menu button */}
+              {/* Mobile menu button - only show when admin */}
               {isAdmin && (
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -89,6 +89,17 @@ export function Layout({ children }: LayoutProps) {
                     <Menu className="block h-6 w-6" />
                   )}
                 </button>
+              )}
+              
+              {/* Mobile login link - only show when not admin */}
+              {!isAdmin && (
+                <Link
+                  to="/login"
+                  className="md:hidden flex items-center space-x-reverse space-x-2 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 rounded-md transition-colors"
+                >
+                  <LogIn className="w-4 h-4" />
+                  <span>تسجيل الدخول</span>
+                </Link>
               )}
               
               {/* Desktop auth button */}
